@@ -1,11 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Income-Handler</title>
-</head>
-<body>
-     <h1>Wake up to reality</h1>
-</body>
+     <head>
+          <meta charset="UTF-8" />
+          <meta
+               name="viewport"
+               content="width=device-width, initial-scale=1.0"
+          />
+          <title>Income-Handler</title>
+          <link
+               href="https://cdn.jsdelivr.net/npm/daisyui@3.5.1/dist/full.css"
+               rel="stylesheet"
+               type="text/css"
+          />
+          <script src="https://cdn.tailwindcss.com"></script>
+     </head>
+     <body>
+          <h1 class="text-center text-2xl font-bold my-5 text-green-700">Wake up to reality</h1>
+          <section class="text-center text-2xl font-bold">
+               <div action="" class="items-center text-center border space-y-4">
+                    <label>income:</label>
+                    <input
+                         onclick=""
+                         type="text"
+                         name=""
+                         id="income-text"
+                         class="border "
+                    />
+                    <h1 class="text-3xl text-red-400">Expenses</h1>
+                    <label for="">Food:</label>
+                    <input type="text" id="food-text" class="border" />
+                    <br />
+                    <label for="">Rent:</label>
+                    <input type="text" name="" id="rent-text" class="border" />
+                    <br />
+                    <label for="">clothes:</label>
+                    <input
+                         type="text"
+                         name=""
+                         id="clothes-text"
+                         class="border"
+                    />
+                    <br />
+
+                    <button onclick="foodCalculation()" class="btn btn-success ">
+                         calculate
+                    </button>
+
+                    <p>Total Expenses:<span id="total-exp">00</span></p>
+
+                    <p>Balance:<span id="total-balance">00</span></p>
+
+                    <div class="inline-flex items-center gap-3">
+                         <label for="">Save:</label>
+                         <input
+                              type="text"
+                              name=""
+                              id="save-text"
+                              class="border w-14 text-center"
+                         />
+                         <p>%</p>
+                         <button onclick="discount()" class="btn btn-success ">Save</button>
+                    </div>
+                    <p >Saving Amount:<span id="saving-amount">00</span></p>
+                    <p> Remaining balance:<span id="remaining-balance">00</span></p>
+               </div>
+          </section>
+
+          <script>
+               function inputField(id) {
+                    const input = document.getElementById(id);
+                    const text = input.value;
+                    const amount = parseFloat(text);
+                    return amount;
+               }
+               function display(elementId, value) {
+                    const element = document.getElementById(elementId);
+                    element.innerText = value.toFixed(2);
+               }
+               function foodCalculation() {
+                    const income = inputField("income-text");
+                    const food = inputField("food-text");
+                    const rent = inputField("rent-text");
+                    const clothes = inputField("clothes-text");
+                    // if(income !== 'number' || rent || 'number' || rent !== 'number'){
+                    //      alert("please enter a number")
+                    //      return
+                    // }
+
+                    if(isNaN(income) || isNaN(food) || isNaN(rent) || isNaN(clothes)) {
+                         alert('Please enter a integer number')
+                         return;
+                    }
+                    
+
+                    const totalExpenses = food + rent + clothes;
+
+                    if(income<totalExpenses){
+                         alert('shameless Person')
+                         return;
+                    }
+                    const balance = income - totalExpenses;
+                    display("total-exp", totalExpenses);
+                    display("total-balance", balance);
+                    // const a = document.getElementById('total-exp')
+                    // a.innerText = totalExpenses;
+                    // const b = document.getElementById('total-balance')
+                    // b.innerText=balance;
+               }
+
+               function discount(){
+                    const savingPercentage = inputField("save-text");
+                    const totalIncomeMoney = inputField('income-text')
+                    const balance = parseFloat(document.getElementById('total-balance').innerText);
+
+                    if(isNaN(savingPercentage) || isNaN(totalIncomeMoney) || isNaN(balance)) {
+                         alert('Please enter a integer number')
+                         return;
+                    }
+                    const totalSavingAmount = (savingPercentage / 100) * totalIncomeMoney;
+                    if(totalSavingAmount > balance){
+
+                         alert('You cannot save this kind of money')
+                         return
+                    }
+
+                     const remainingBalance = balance - totalSavingAmount;
+                    display('saving-amount',totalSavingAmount);
+                    display('remaining-balance',remainingBalance);
+               
+               }
+          </script>
+     </body>
 </html>
