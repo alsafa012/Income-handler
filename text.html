@@ -12,34 +12,50 @@
                rel="stylesheet"
                type="text/css"
           />
+          <style>
+               .expense-table tr{
+                    margin-bottom: 20px;
+               }
+          </style>
           <script src="https://cdn.tailwindcss.com"></script>
+
      </head>
      <body>
           <h1 class="text-center text-2xl font-bold my-5 text-green-700">Wake up to reality</h1>
-          <section class="text-center text-2xl font-bold">
-               <div action="" class="items-center text-center border space-y-4">
-                    <label>income:</label>
-                    <input
+          <section class="text-2xl font-bold">
+               <div action="" class=" text-center border space-y-4">
+                  <table class="mx-auto expense-table">
+                    <tr>
+                        <td> <label>income:</label></td>
+                        <td> <input
                          onclick=""
                          type="text"
                          name=""
                          id="income-text"
                          class="border "
-                    />
-                    <h1 class="text-3xl text-red-400">Expenses</h1>
-                    <label for="">Food:</label>
-                    <input type="text" id="food-text" class="border" />
-                    <br />
-                    <label for="">Rent:</label>
-                    <input type="text" name="" id="rent-text" class="border" />
-                    <br />
-                    <label for="">clothes:</label>
-                    <input
+                    /></td>
+                       </tr>
+                         <tr><td colspan="2"><h1 class="text-3xl text-red-400">Expenses</h1></td></tr>
+                        <tr>
+                         <td><label for="">Food:</label></td>
+                         <td><input type="text" id="food-text" class="border" /></td>
+                        </tr>
+                         
+                         <tr>
+                              <td><label for="">Rent:</label></td>
+                         <td><input type="text" name="" id="rent-text" class="border" /></td>
+                         </tr>
+                         
+                         <tr>
+                             <td> <label for="">clothes:</label></td>
+                       <td>  <input
                          type="text"
                          name=""
                          id="clothes-text"
                          class="border"
                     />
+                    </tr></td>
+                  </table>
                     <br />
 
                     <button onclick="foodCalculation()" class="btn btn-success ">
@@ -64,20 +80,6 @@
                     <p >Saving Amount:<span id="saving-amount">00</span></p>
                     <p> Remaining balance:<span id="remaining-balance">00</span></p>
                </div>
-               <table class="mx-auto" >
-                    <tr>
-                        <th>Label</th>
-                        <th>Input</th>
-                    </tr>
-                    <tr>
-                        <td><label for="food-text">Food:</label></td>
-                        <td><input type="text" id="food-text" class="border" /></td>
-                    </tr>
-                    <tr>
-                        <td><label for="food-text">Food:</label></td>
-                        <td><input type="text" id="food-text" class="border" /></td>
-                    </tr>
-                </table>
           </section>
 
           <script>
