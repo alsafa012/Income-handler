@@ -13,11 +13,13 @@
                type="text/css"
           />
           <style>
-               .expense-table tr{
-                    margin-bottom: 20px;
-               }
                input{
                     width: 80%;
+               }
+              
+               .t{
+                    border-spacing:0px 10px;
+                    border-collapse: separate;
                }
           </style>
           <script src="https://cdn.tailwindcss.com"></script>
@@ -27,8 +29,8 @@
           <h1 class="text-center text-2xl font-bold my-5 text-green-700">Wake up to reality</h1>
           <section class="text-2xl font-bold">
                <div action="" class=" text-center border space-y-4">
-                  <table class="mx-auto expense-table">
-                    <tr>
+                  <table class="mx-auto t">
+                    <tr >
                         <td> <label>income:</label></td>
                         <td> <input
                          onclick=""
@@ -121,10 +123,6 @@
                     const balance = income - totalExpenses;
                     display("total-exp", totalExpenses);
                     display("total-balance", balance);
-                    // const a = document.getElementById('total-exp')
-                    // a.innerText = totalExpenses;
-                    // const b = document.getElementById('total-balance')
-                    // b.innerText=balance;
                }
 
                function discount(){
